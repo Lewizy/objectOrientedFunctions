@@ -25,8 +25,8 @@ function Dog() {
 let hound = new Dog();//<== creates new instance of the object Dog
 console.log(Dog.name); // Rupert
 
-///////////////////////////////////////////////
-Extend Constructors to Receive Arguments
+
+//Extend Constructors to Receive Arguments__________________________________________________________________________
 
 function Dog(name,color) {
 
@@ -37,3 +37,50 @@ this.numLegs = 4;
 }
 let terrier = new Dog("jack","red");
 console.log(terrier.numLegs)//4
+
+
+//Verify an Object's Constructor with instanceof_____________________________________________________________________
+
+/* jshint expr: true */
+
+function House(numBedrooms) {
+  this.numBedrooms = numBedrooms;
+}
+
+let myHouse = new House(5);
+myHouse instanceof House;
+// Add your code below this line
+
+
+//Understand Own Properties___________________________________________________________________________________________
+
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+
+let canary = new Bird("Tweety");
+let ownProps = [];
+
+for(let i in canary){
+  if(canary.hasOwnProperty(i)){
+    ownProps.push(i)
+  }
+} console.log(ownProps); //[ 'name', 'numLegs' ]
+
+
+// Use Prototype Properties to Reduce Duplicate Code___________________________________________________________________
+
+function Dog(name) {
+  this.name = name;
+}
+let beagle = new Dog("Snoopy");
+Dog.prototype.numLegs = 5;
+
+
+
+
+
+
+
+
