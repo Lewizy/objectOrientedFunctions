@@ -72,10 +72,136 @@ for(let i in canary){
 // Use Prototype Properties to Reduce Duplicate Code___________________________________________________________________
 
 function Dog(name) {
-  this.name = name;
+  this.name = name; //own property
 }
 let beagle = new Dog("Snoopy");
-Dog.prototype.numLegs = 5;
+Dog.prototype.numLegs = 5;// prototype property
+
+//Here is how you add duck’s own properties to the array ownProps and prototype properties to the array prototypeProps:
+function Bird(name) {
+  this.name = name; //own property
+}
+Bird.prototype.numLegs = 2; // prototype property
+
+let duck = new Bird("Donald");
+let ownProps = [];
+let prototypeProps = [];
+
+for (let property in duck) {
+  if(duck.hasOwnProperty(property)) {
+    ownProps.push(property);
+  } else {
+    prototypeProps.push(property);
+  }
+}
+console.log(ownProps); // prints ["name"]
+console.log(prototypeProps); // prints ["numLegs"]
+
+
+//Irarate over all properties_________________________________________________________________________________________
+//Add all of the own properties of beagle to the array ownProps. 
+//Add all of the prototype properties of Dog to the array prototypeProps.
+
+function Dog(name) {
+  this.name = name;
+}
+
+Dog.prototype.numLegs = 4;
+
+let beagle = new Dog("Snoopy");
+
+let ownProps = [];
+let prototypeProps = [];
+
+// Add your code below this line 
+for (let i in beagle){
+  if (Dog.hasOwnProperty(i)){
+    ownProps.push(i);
+  }else{
+    prototypeProps.push(i);
+  }
+}
+console.log(ownProps)//[ 'name' ]
+console.log(prototypeProps)//[ 'numLegs' ]
+
+
+//Understand the "Constructor" Property_______________________________________________________________________________
+
+function Dog(name) {
+  this.name = name;
+}
+
+function joinDogFraternity(candidate) {
+    if (candidate.constructor === Dog) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let scooby = new Dog("scooby Doo");
+console.log(scooby.constructor === Dog);
+joinDogFraternity(scooby);//true
+
+
+
+
+//Change the Prototype to a New Object_________________________________________________________________________________
+
+//Up until now you have been adding properties to the prototype individually:
+Bird.prototype.numLegs = 2;
+
+//This becomes tedious after more than a few properties.
+Bird.prototype.eat = function() {
+  console.log("nom nom nom");
+}
+Bird.prototype.describe = function() {
+  console.log("My name is " + this.name);
+}
+
+//A more efficient way is to set the prototype to a new object that already contains the properties.
+//This way, the properties are added all at once:
+Bird.prototype = {
+  numLegs: 2, 
+  eat: function() {
+    console.log("nom nom nom");
+  },
+  describe: function() {
+    console.log("My name is " + this.name);
+    
+  }
+};
+
+
+// Remember to Set the Constructor Property when Changing the Prototype 
+
+function Dog(name) {
+  this.name = name; 
+}
+Dog.prototype = {
+  constructor:Dog,
+  
+  numLegs: 2, 
+  eat: function() {
+    console.log("nom nom nom"); 
+  }, 
+  describe: function() {
+    console.log("My name is " + this.name); 
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
