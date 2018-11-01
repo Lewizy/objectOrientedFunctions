@@ -173,7 +173,7 @@ Bird.prototype = {
 };
 
 
-// Remember to Set the Constructor Property when Changing the Prototype 
+// Remember to Set the Constructor Property when Changing the Prototype__________________________________________________ 
 
 function Dog(name) {
   this.name = name; 
@@ -189,6 +189,15 @@ Dog.prototype = {
     console.log("My name is " + this.name); 
   }
 };
+
+//Understand Where an Object’s Prototype Comes From_______________________________________________________________________
+
+function Dog(name) {
+  this.name = name;
+}
+
+let beagle = new Dog("Snoopy");
+Dog.prototype.isPrototypeOf(beagle);//true
 
 
 
