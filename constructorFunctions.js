@@ -1,7 +1,8 @@
 /*Constructors follow a few conventions:
 
 Constructors are defined with a capitalized name to distinguish them from other functions that are not constructors.
-Constructors use the keyword this to set properties of the object they will create. Inside the constructor, this refers to the new object it will create.
+Constructors use the keyword this to set properties of the object they will create. 
+Inside the constructor, this refers to the new object it will create.
 Constructors define properties and behaviors instead of returning a value as other functions might.
 
 */
@@ -147,6 +148,11 @@ joinDogFraternity(scooby);//true
 
 
 //Change the Prototype to a New Object_________________________________________________________________________________
+
+function Bird(type){
+  this.type = type;
+
+}
 
 //Up until now you have been adding properties to the prototype individually:
 Bird.prototype.numLegs = 2;
