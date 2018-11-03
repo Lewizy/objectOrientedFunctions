@@ -7,34 +7,27 @@ Constructors define properties and behaviors instead of returning a value as oth
 
 */
 
-
-let dog = {
-  name: "Spot",
-  numLegs: 4,
-  sayLegs: function(){
-    return "This dog has " +dog.numLegs+ " legs.";}
-};
-console.log(
-dog.sayLegs());"This dog has 4 legs."
-
 //use a contructor function to create an object
 function Dog() {
   this.name = "Rupert";
   this.color = "brown";
   this.numLegs = 4;
+  this.info = function(){
+    console.log("my name is "+this.name+" color is "+this.color);
+  }
 }
 let hound = new Dog();//<== creates new instance of the object Dog
 console.log(Dog.name); // Rupert
+hound.name = "lambert";
+console.log(hound.info);
 
 
 //Extend Constructors to Receive Arguments__________________________________________________________________________
 
 function Dog(name,color) {
-
-this.name = name;
-this.color = color;
-this.numLegs = 4;
-
+  this.name = name;
+  this.color = color;
+  this.numLegs = 4;
 }
 let terrier = new Dog("jack","red");
 console.log(terrier.numLegs)//4
@@ -219,24 +212,5 @@ Dog.prototype.isPrototypeOf(beagle);  // => true
 
 // Fix the code below so that it evaluates to true
 Object.prototype.isPrototypeOf(Dog.prototype);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
